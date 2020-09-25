@@ -53,14 +53,7 @@ module.exports = {
             // 25 + 15 = 40 (SI + LCP)
             // 15 + 25 = 40 (TTI + TBT)
             // 5 (CLS)
-            { id: 'field-fcp', weight: 0, group: 'page' },
-            { id: 'field-lcp', weight: 1, group: 'page' },
-            { id: 'field-fid', weight: 1, group: 'page' },
-            { id: 'field-cls', weight: 1, group: 'page' },
-            { id: 'field-fcp-origin', weight: 0, group: 'origin' },
-            { id: 'field-lcp-origin', weight: 0, group: 'origin' },
-            { id: 'field-fid-origin', weight: 0, group: 'origin' },
-            { id: 'field-cls-origin', weight: 0, group: 'origin' },
+            { id: 'field-fcp', weight: 0, group: 'page' }
         ],
     },
 }
