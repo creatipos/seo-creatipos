@@ -17,7 +17,7 @@ const scoreAllCategories = ReportScoring.scoreAllCategories
 /** @param {any} configCategories @param {ResultsByAuditId} resultsByAuditId */
 ReportScoring.scoreAllCategories = function(configCategories, resultsByAuditId) {
     const result = scoreAllCategories(configCategories, resultsByAuditId)
-    const fieldPluginCategory = /** @type {CategoryResult | null} */ (result['lighthouse-plugin-field-performance'])
+    const fieldPluginCategory = /** @type {CategoryResult | null} */ (result['lighthouse-plugin-seopower'])
     if (!fieldPluginCategory) return result
     fieldPluginCategory.score = getMinScore(fieldPluginCategory, resultsByAuditId)
     return result
@@ -32,14 +32,14 @@ function getMinScore(fieldPluginCategoryResult, resultsByAuditId) {
 
 module.exports = {
     audits: [
-        { path: 'lighthouse-plugin-field-performance/src/audits/field-fcp.js' },
-        { path: 'lighthouse-plugin-field-performance/src/audits/field-lcp.js' },
-        { path: 'lighthouse-plugin-field-performance/src/audits/field-fid.js' },
-        { path: 'lighthouse-plugin-field-performance/src/audits/field-cls.js' },
-        { path: 'lighthouse-plugin-field-performance/src/audits/field-fcp-origin.js' },
-        { path: 'lighthouse-plugin-field-performance/src/audits/field-lcp-origin.js' },
-        { path: 'lighthouse-plugin-field-performance/src/audits/field-fid-origin.js' },
-        { path: 'lighthouse-plugin-field-performance/src/audits/field-cls-origin.js' },
+        { path: 'lighthouse-plugin-seopower/src/audits/field-fcp.js' },
+        { path: 'lighthouse-plugin-seopower/src/audits/field-lcp.js' },
+        { path: 'lighthouse-plugin-seopowersrc/audits/field-fid.js' },
+        { path: 'lighthouse-plugin-seopower/src/audits/field-cls.js' },
+        { path: 'lighthouse-plugin-seopower/src/audits/field-fcp-origin.js' },
+        { path: 'lighthouse-plugin-seopower/src/audits/field-lcp-origin.js' },
+        { path: 'lighthouse-plugin-seopower/src/audits/field-fid-origin.js' },
+        { path: 'lighthouse-plugin-seopower/src/audits/field-cls-origin.js' },
     ],
     groups: {
         page: {
