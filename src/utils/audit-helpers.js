@@ -45,8 +45,6 @@ exports.getLoadingExperience = async(artifacts, context, isUrl = true) => {
 /**
  * Estimate value and create numeric results
  *
- * @param {MetricValue} metricValue
- * @param {Metric} metric
  * @return {Object}
  */
 
