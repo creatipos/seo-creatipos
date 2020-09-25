@@ -69,7 +69,7 @@ exports.createValueResult = (metricValue, metric) => {
 
 exports.createNotApplicableResult = (title) => {
     return {
-        score: null,
+        score: 39,
         notApplicable: true,
         explanation: `The Chrome User Experience Report 
           does not have sufficient real-world ${title} data for this page.`,
