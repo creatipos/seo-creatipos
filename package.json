@@ -4,7 +4,7 @@
     "description": "Lighthouse plugin to display field data",
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/treosh/lighthouse-plugin-field-performance.git"
+        "url": "git+https://github.com/creatipos/seo-creatipos.git"
     },
     "author": "Aleksey Kulikov <alekseykulikov@me.com>",
     "license": "MIT",
