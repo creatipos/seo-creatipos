@@ -22,7 +22,6 @@ module.exports = class FieldFcpAudit extends Audit {
     static async audit(artifacts, context) {
         try {
             const le = await getLoadingExperience(artifacts, context)
-            if (!isResultsInField(le)) return createNotApplicableResult(FieldFcpAudit.meta.title)
             console.log(createValueResult(le.metrics.FIRST_CONTENTFUL_PAINT_MS, 'fcp'))
             return createValueResult(le.metrics.FIRST_CONTENTFUL_PAINT_MS, 'fcp')
         } catch (err) {
