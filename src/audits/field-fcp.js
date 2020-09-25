@@ -3,8 +3,6 @@ const {
     getLoadingExperience,
     createNotApplicableResult,
     createValueResult,
-    createErrorResult,
-    isResultsInField,
 } = require('../utils/audit-helpers')
 
 module.exports = class FieldFcpAudit extends Audit {
@@ -21,11 +19,11 @@ module.exports = class FieldFcpAudit extends Audit {
     /** @param {Object} artifacts @param {Object} context */
     static async audit(artifacts, context) {
         try {
-            const le = await getLoadingExperience(artifacts, context)
-            console.log(createValueResult(le.metrics.FIRST_CONTENTFUL_PAINT_MS, 'fcp'))
-            return createValueResult(le.metrics.FIRST_CONTENTFUL_PAINT_MS, 'fcp')
+
+
+            return createValueResult()
         } catch (err) {
-            return createErrorResult(err)
+            return null
         }
     }
 }
