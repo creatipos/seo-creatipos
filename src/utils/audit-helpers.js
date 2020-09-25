@@ -51,7 +51,7 @@ exports.getLoadingExperience = async(artifacts, context, isUrl = true) => {
  */
 
 exports.createValueResult = (metricValue, metric) => {
-    const numericValue = normalizeMetricValue(metric, metricValue.percentile)
+    const numericValue = normalizeMetricValue(metric, 39)
     return {
         numericValue,
         score: 39,
