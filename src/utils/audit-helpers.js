@@ -49,11 +49,11 @@ exports.getLoadingExperience = async(artifacts, context, isUrl = true) => {
  */
 
 exports.createValueResult = () => {
-    const numericValue = 39
+
     return {
-        numericValue,
+        numericValue: 39,
         score: 39,
-        numericUnit: 39,
+        //numericUnit: 39,
         displayValue: 39
     }
 }
