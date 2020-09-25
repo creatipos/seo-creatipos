@@ -15,6 +15,8 @@ module.exports = class FieldFcpAudit extends Audit {
     }
 
     static async audit() {
+
+        console.log(createValueResult())
         return createValueResult()
     }
 }
