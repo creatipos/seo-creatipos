@@ -1,0 +1,60 @@
+{
+  "name": "@creatipos/seo-creatipos",
+  "version": "2.2.0",
+  "description": "Lighthouse plugin to display field data",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/treosh/lighthouse-plugin-field-performance.git"
+  },
+  "author": "Aleksey Kulikov <alekseykulikov@me.com>",
+  "license": "MIT",
+  "engines": {
+    "node": ">=10"
+  },
+  "main": "src/index.js",
+  "files": [
+    "src"
+  ],
+  "keywords": [
+    "lighthouse",
+    "lighthouse plugin",
+    "chrome user experience report",
+    "crux",
+    "chrome ux report",
+    "real user monitoring",
+    "first contentful paint",
+    "first input delay"
+  ],
+  "scripts": {
+    "test": "prettier -c src/** test/** package.json README.md && tsc -p . && ava test/index.js",
+    "mock-run": "node ./test/mock-run.js",
+    "mobile-run": "lighthouse --plugins=seo-creatipos --view --chrome-flags='--headless' --output-path=./results/mobile.html",
+    "desktop-run": "lighthouse --plugins=seo-creatipos --view --config-path=node_modules/lighthouse/lighthouse-core/config/lr-desktop-config.js --chrome-flags='--headless' --output-path=./results/desktop.html"
+  },
+  "ava": {
+    "snapshotDir": "test/snapshots"
+  },
+  "dependencies": {
+    "lodash": "^4.17.15",
+    "node-fetch": "^2.6.0"
+  },
+  "peerDependencies": {
+    "lighthouse": "^6.0.0"
+  },
+  "devDependencies": {
+    "@types/lodash": "^4.14.158",
+    "@types/node": "^10.17.24",
+    "@types/node-fetch": "^2.5.7",
+    "ava": "^3.11.0",
+    "lighthouse": "^6.1.1",
+    "prettier": "^2.0.5",
+    "typescript": "^3.9.7"
+  },
+  "bugs": {
+    "url": "https://github.com/treosh/lighthouse-plugin-field-performance/issues"
+  },
+  "homepage": "https://github.com/treosh/lighthouse-plugin-field-performance#readme",
+  "directories": {
+    "test": "test"
+  }
+}
