@@ -55,8 +55,8 @@ exports.createValueResult = (metricValue, metric) => {
     return {
         numericValue,
         score: 39,
-        numericUnit: getMetricNumericUnit(metric),
-        displayValue: formatMetric(metric, numericValue),
+        numericUnit: 39,
+        displayValue: 39,
         details: createDistributionsTable(metricValue, metric),
     }
 }
