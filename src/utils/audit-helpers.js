@@ -7,7 +7,7 @@
 exports.createValueResult = () => {
 
     return {
-        score: 0.3,
+        score: 0.39,
         //numericUnit: 39,
         displayValue: 3
     }
