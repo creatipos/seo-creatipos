@@ -22,24 +22,24 @@ const requests = new Map()
  * @return {Promise<LoadingExperience>}
  */
 
-exports.getLoadingExperience = async (artifacts, context, isUrl = true) => {
-  const psiToken = context.settings.psiToken || null
-  const strategy = artifacts.settings.emulatedFormFactor === 'desktop' ? 'desktop' : 'mobile'
-  const prefix = isUrl ? 'url' : 'origin'
-  const { href, origin } = new URL(artifacts.URL.finalUrl)
-  const url = `${prefix}:${href}`
-  const key = url + strategy
-  if (!requests.has(key)) {
-    requests.set(key, runPsi({ url, strategy, psiToken }))
-  }
-  const json = await requests.get(key)
-  if (json.error) throw new Error(JSON.stringify(json.error))
-  // check, that URL response is not for origin
-  if (isUrl) {
-    const hasUrlExperience = json.loadingExperience && json.loadingExperience.id !== origin
-    return hasUrlExperience ? json.loadingExperience : null
-  }
-  return json.loadingExperience
+exports.getLoadingExperience = async(artifacts, context, isUrl = true) => {
+    const psiToken = context.settings.psiToken || null
+    const strategy = artifacts.settings.emulatedFormFactor === 'desktop' ? 'desktop' : 'mobile'
+    const prefix = isUrl ? 'url' : 'origin'
+    const { href, origin } = new URL(artifacts.URL.finalUrl)
+    const url = `${prefix}:${href}`
+    const key = url + strategy
+    if (!requests.has(key)) {
+        requests.set(key, runPsi({ url, strategy, psiToken }))
+    }
+    const json = await requests.get(key)
+    if (json.error) throw new Error(JSON.stringify(json.error))
+        // check, that URL response is not for origin
+    if (isUrl) {
+        const hasUrlExperience = json.loadingExperience && json.loadingExperience.id !== origin
+        return hasUrlExperience ? json.loadingExperience : null
+    }
+    return json.loadingExperience
 }
 
 /**
@@ -51,14 +51,14 @@ exports.getLoadingExperience = async (artifacts, context, isUrl = true) => {
  */
 
 exports.createValueResult = (metricValue, metric) => {
-  const numericValue = normalizeMetricValue(metric, metricValue.percentile)
-  return {
-    numericValue,
-    score: Audit.computeLogNormalScore(getMetricRange(metric), numericValue),
-    numericUnit: getMetricNumericUnit(metric),
-    displayValue: formatMetric(metric, numericValue),
-    details: createDistributionsTable(metricValue, metric),
-  }
+    const numericValue = normalizeMetricValue(metric, metricValue.percentile)
+    return {
+        numericValue,
+        score: 39,
+        numericUnit: getMetricNumericUnit(metric),
+        displayValue: formatMetric(metric, numericValue),
+        details: createDistributionsTable(metricValue, metric),
+    }
 }
 
 /**
@@ -68,12 +68,12 @@ exports.createValueResult = (metricValue, metric) => {
  */
 
 exports.createNotApplicableResult = (title) => {
-  return {
-    score: null,
-    notApplicable: true,
-    explanation: `The Chrome User Experience Report 
+    return {
+        score: null,
+        notApplicable: true,
+        explanation: `The Chrome User Experience Report 
           does not have sufficient real-world ${title} data for this page.`,
-  }
+    }
 }
 
 /**
@@ -83,11 +83,11 @@ exports.createNotApplicableResult = (title) => {
  */
 
 exports.createErrorResult = (err) => {
-  console.log(err)
-  return {
-    score: null,
-    errorMessage: err.toString(),
-  }
+    console.log(err)
+    return {
+        score: null,
+        errorMessage: err.toString(),
+    }
 }
 
 /**
@@ -97,7 +97,7 @@ exports.createErrorResult = (err) => {
  */
 
 exports.isResultsInField = (le) => {
-  return !!le && Boolean(Object.values(le.metrics || {}).length)
+    return !!le && Boolean(Object.values(le.metrics || {}).length)
 }
 
 /**
@@ -106,29 +106,29 @@ exports.isResultsInField = (le) => {
  */
 
 function createDistributionsTable({ distributions }, metric) {
-  const headings = [
-    { key: 'category', itemType: 'text', text: 'Category' },
-    { key: 'distribution', itemType: 'text', text: 'Percent of traffic' },
-  ]
-  const items = distributions.map(({ min, max, proportion }, index) => {
-    const item = {}
-    const normMin = formatMetric(metric, normalizeMetricValue(metric, min))
-    const normMax = formatMetric(metric, normalizeMetricValue(metric, max))
+    const headings = [
+        { key: 'category', itemType: 'text', text: 'Category' },
+        { key: 'distribution', itemType: 'text', text: 'Percent of traffic' },
+    ]
+    const items = distributions.map(({ min, max, proportion }, index) => {
+        const item = {}
+        const normMin = formatMetric(metric, normalizeMetricValue(metric, min))
+        const normMax = formatMetric(metric, normalizeMetricValue(metric, max))
 
-    if (min === 0) {
-      item.category = `Good (faster than ${normMax})`
-    } else if (max && min === distributions[index - 1].max) {
-      item.category = `Needs improvement (from ${normMin} to ${normMax})`
-    } else {
-      item.category = `Poor (longer than ${normMin})`
-    }
+        if (min === 0) {
+            item.category = `Good (faster than ${normMax})`
+        } else if (max && min === distributions[index - 1].max) {
+            item.category = `Needs improvement (from ${normMin} to ${normMax})`
+        } else {
+            item.category = `Poor (longer than ${normMin})`
+        }
 
-    item.distribution = `${round(proportion * 100, 1)} %`
+        item.distribution = `${round(proportion * 100, 1)} %`
 
-    return item
-  })
+        return item
+    })
 
-  return Audit.makeTableDetails(headings, items)
+    return Audit.makeTableDetails(headings, items)
 }
 
 /**
@@ -149,41 +149,41 @@ function createDistributionsTable({ distributions }, metric) {
  */
 
 function getMetricRange(metric) {
-  switch (metric) {
-    case 'fcp':
-      return { p10: 1000, median: 3000 }
-    case 'lcp':
-      return { p10: 2500, median: 4000 }
-    case 'fid':
-      return { p10: 100, median: 300 }
-    case 'cls':
-      return { p10: 0.1, median: 0.25 }
-    default:
-      throw new Error(`Invalid metric range: ${metric}`)
-  }
+    switch (metric) {
+        case 'fcp':
+            return { p10: 1000, median: 3000 }
+        case 'lcp':
+            return { p10: 2500, median: 4000 }
+        case 'fid':
+            return { p10: 100, median: 300 }
+        case 'cls':
+            return { p10: 0.1, median: 0.25 }
+        default:
+            throw new Error(`Invalid metric range: ${metric}`)
+    }
 }
 
 /** @param {Metric} metric, @param {number} value */
 function formatMetric(metric, value) {
-  switch (metric) {
-    case 'fcp':
-    case 'lcp':
-      return round(value / 1000, 1).toFixed(1) + ' s'
-    case 'fid':
-      return round(round(value / 10) * 10) + ' ms'
-    case 'cls':
-      return value === 0 ? '0' : value === 0.1 ? '0.10' : round(value, 3).toString()
-    default:
-      throw new Error(`Invalid metric format: ${metric}`)
-  }
+    switch (metric) {
+        case 'fcp':
+        case 'lcp':
+            return round(value / 1000, 1).toFixed(1) + ' s'
+        case 'fid':
+            return round(round(value / 10) * 10) + ' ms'
+        case 'cls':
+            return value === 0 ? '0' : value === 0.1 ? '0.10' : round(value, 3).toString()
+        default:
+            throw new Error(`Invalid metric format: ${metric}`)
+    }
 }
 
 /** @param {Metric} metric @param {number} value */
 function normalizeMetricValue(metric, value) {
-  return metric === 'cls' ? value / 100 : value
+    return metric === 'cls' ? value / 100 : value
 }
 
 /** @param {Metric} metric */
 function getMetricNumericUnit(metric) {
-  return metric === 'cls' ? 'unitless' : 'millisecond'
+    return metric === 'cls' ? 'unitless' : 'millisecond'
 }
