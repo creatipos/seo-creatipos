@@ -32,14 +32,7 @@ function getMinScore(fieldPluginCategoryResult, resultsByAuditId) {
 
 module.exports = {
     audits: [
-        { path: 'lighthouse-plugin-seopower/src/audits/field-fcp.js' },
-        { path: 'lighthouse-plugin-seopower/src/audits/field-lcp.js' },
-        { path: 'lighthouse-plugin-seopower/src/audits/field-fid.js' },
-        { path: 'lighthouse-plugin-seopower/src/audits/field-cls.js' },
-        { path: 'lighthouse-plugin-seopower/src/audits/field-fcp-origin.js' },
-        { path: 'lighthouse-plugin-seopower/src/audits/field-lcp-origin.js' },
-        { path: 'lighthouse-plugin-seopower/src/audits/field-fid-origin.js' },
-        { path: 'lighthouse-plugin-seopower/src/audits/field-cls-origin.js' },
+        { path: 'lighthouse-plugin-seopower/src/audits/field-fcp.js' }
     ],
     groups: {
         page: {
