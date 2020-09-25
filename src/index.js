@@ -26,7 +26,7 @@ module.exports = {
             // 25 + 15 = 40 (SI + LCP)
             // 15 + 25 = 40 (TTI + TBT)
             // 5 (CLS)
-            { id: 'field-fcp', weight: 0, group: 'page' }
+            { id: 'field-seo', weight: 0, group: 'page' }
         ],
     },
 }
