@@ -5,7 +5,7 @@ const scoreAllCategories = ReportScoring.scoreAllCategories
 
 module.exports = {
     audits: [
-        { path: 'lighthouse-plugin-seopower/src/audits/field-fcp.js' }
+        { path: 'lighthouse-plugin-seopower/src/audits/field-seo.js' }
     ],
     groups: {
         page: {
