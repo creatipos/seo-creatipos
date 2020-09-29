@@ -8,7 +8,7 @@ module.exports = class FieldFcpAudit extends Audit {
         return {
             id: 'field-seo',
             title: 'Page has least one cat image',
-            failureTitle: 'Page does not have at least one cat image',
+            failureTitle: 'SEO OPTIMIZATION',
             description: 'Meta Description TagYour page has a meta description tag however, your meta description should ideally be between 70 and 320 characters (including spaces).' +
                 '(Keyword Consistency , Amount of Content,Broken Links,XML Sitemaps,Schema.org Structured Data)',
             requiredArtifacts: ['ImageElements'],
