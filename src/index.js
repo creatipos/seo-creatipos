@@ -18,7 +18,7 @@ module.exports = {
         },
     },
     category: {
-        title: 'SEO - Ahrefs - webpagetest',
+        title: 'SEO - Ahrefs - Webpagetest',
         description: 'Try the free version of Ahrefs Backlink Checker. Get a glimpse into the power of our premium tool.',
         auditRefs: [
             // Now every metric is weighted equally, based on idea to pass all CWV.
