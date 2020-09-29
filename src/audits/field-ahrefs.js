@@ -18,9 +18,9 @@ module.exports = class FieldFcpAudit extends Audit {
 
 
         return {
-            score: 0.39,
+            score: 0.38,
             //numericUnit: 39,
-            displayValue: 3
+            displayValue: 38
         }
 
     }
