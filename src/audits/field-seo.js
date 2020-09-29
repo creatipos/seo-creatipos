@@ -9,8 +9,8 @@ module.exports = class FieldFcpAudit extends Audit {
             id: 'field-seo',
             title: 'Page has least one cat image',
             failureTitle: 'Page does not have at least one cat image',
-            description: 'Pages should have lots of cat images to keep users happy. ' +
-                'Consider adding a picture of a cat to your page improve engagement.',
+            description: 'Meta Description TagYour page has a meta description tag however, your meta description should ideally be between 70 and 320 characters (including spaces).' +
+                '(Keyword Consistency , Amount of Content,Broken Links,XML Sitemaps,Schema.org Structured Data)',
             requiredArtifacts: ['ImageElements'],
         }
     }
@@ -19,9 +19,9 @@ module.exports = class FieldFcpAudit extends Audit {
 
 
         return {
-            score: 0.39,
+            score: 0.30,
             //numericUnit: 39,
-            displayValue: 3
+            displayValue: 30
         }
 
     }
